@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='py_ma',
     version='0.0.0',
-    packages=find_packages(exclude=('tests*')),
+    packages=['py_ma'],
     author='VZ',
     install_requires=[
         'marshmallow==3.0.0b9',
@@ -14,7 +14,7 @@ setup(
         'dev': ['pytest']
     },
     include_package_data=True,
-    py_modules=['py_ma'],
     setup_requires=['pytest-runner==4.2'],
-    tests_require=['pytest']
+    tests_require=['pytest'],
+    zip_safe=False
 )

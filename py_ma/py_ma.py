@@ -2,7 +2,7 @@ import csv
 import io
 from typing import Dict
 
-from marshmallow import Schema, SchemaOpts, pre_load
+from marshmallow import Schema, SchemaOpts
 import xmltodict
 
 
