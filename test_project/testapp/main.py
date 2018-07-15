@@ -36,7 +36,6 @@ def load_reddit():
 
 
 if __name__ == '__main__':
-
     logging.getLogger().handlers = []  # drop all previous logger handlers
     logging.basicConfig(
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
