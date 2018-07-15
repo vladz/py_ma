@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PY_MA</title>
+</head>
+<body>
+    <div>
+        <div>
+            <button type="button" id="load-habra">Load Habra</button>
+            <button type="button" id="load-reddit">Load Reddit</button>
+        </div>
+        <div>
+        {% for source in sources %}
+            <h1>{{ source.name|upper }}</h1>
+            {% for article in source.articles %}
+                <hr />
+                <h3>Title: {{ article.title }}</h3>
+                <p>Author: {{ article.author.name }}</p>
+                <p>Date: {{ article.dt_create }}</p>
+                <p>Description: {{ article.description|safe }}</p>
+                <p><a href="{{ article.link }}">link</a></p>
+                <p>
+                    {% for tag in article.tags %}
+                        <span style="color: grey; margin-right: 30px">#{{ tag.data }}</span>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(document).on('click', '#load-habra', function () {
+        $.ajax({
+            type: "GET",
+            url: "{{ url_for('load_habra') }}",
+            success: function() {
+                location.reload();
+            }
+        });
+    });
+    $(document).on('click', '#load-reddit', function () {
+        $.ajax({
+            type: "GET",
+            url: "{{ url_for('load_reddit') }}",
+            success: function() {
+                location.reload();
+            }
+        });
+    });
+});
+</script>
+</html>
